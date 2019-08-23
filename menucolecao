@@ -1,0 +1,118 @@
+def adicionaFinal( v, qtd, elem):
+    if qtd < 100:
+        v[qtd] = elem
+        qtd+=1
+    return qtd
+
+def adicionaPosicao(v, qtd, elem,pos)
+    if qtd < 100:
+        if v[qtd] != 0.1:
+            v[qtd]=v[qtd+1]
+            
+            
+
+
+def removeElementoPosicao(v,qtd,pos):
+    if v[pos]==0.1:
+        print("\n\nNada foi removido\n\n")
+
+    else:
+        if v[pos+1]==0.1:
+            v[pos]=0.1
+
+        else:
+            for i in range(pos,98,1):
+                v[i]=v[i+1]                
+            v[99]=0.1
+        qtd-=1
+        return qtd
+
+
+
+def buscaElemento(v,qtd,elem):
+    found = False;
+    for i in range(0,qtd,1):
+        if v[i]==elem:
+            index = i
+            found=True
+            print("\nO elemento se encontra na posicao: ",index)
+            print("\n")            
+            return index
+    if found==False:
+        print("Elemento não encotrado")
+        return -1
+        
+        
+def imprimeColecao( v, qtd ):
+    if v[0]!=0.1:
+        pos=0
+        print("\ncolecao:[",end='')
+        for i in range(0,qtd,1):
+            print(v[i],end=' ')
+        print("]\n")
+        print(qtd)
+    else:
+        print("colecao [Nenhum numero adicionado]\n")
+        print(qtd)            
+                
+#----- Funcao principal
+def main():
+    # na funcao principal teremos a declaração do vetor,
+    # a implementação do menu e a chamada das funções
+    colecao = [0.1]*100
+    qtd = 0 #quantidade de elementos validos no vetor (colecao)
+    opc = 0
+    
+    while opc != 8 :
+        print("1-Adicionar no final")
+        print("2-Adicionar em uma posição")
+        print("3-Remover em uma posição")
+        print("4-Remover primeira ocorrência do elemento")
+        print("5-Remover todas as ocorrências de um elemento")
+        print("6-Verificar se dado elemento está contido")
+        print("7-Verificar se dado um elemento, existem dois elementos na coleção que somados é igual a um valor informado")
+        print("8-Sair")
+        opc = int(input("Digite uma opção: "))
+
+        if opc == 1:
+            elem = int(input("Digite um elemento: "))
+            qtd = adicionaFinal(colecao,qtd,elem)
+            imprimeColecao(colecao, qtd)
+        
+        if opc == 2:
+            elem = int(input("Digite um elemento: "))
+            pos = int(input("Digite uma posição de 0-99: "))
+            qtd = adicionaPosicao(colecao,qtd,elem,pos)
+            imprimeColecao(colecao, qtd)
+
+        if opc == 3:
+            pos = int(input("Digite a posicao: "))
+            qtd = removeElementoPosicao(colecao,qtd,pos)
+            
+            imprimeColecao(colecao, qtd)
+
+        if opc == 4:
+            elem = int(input("Digite um elemento: "))
+            qnd = removePrimeiraOcorrencia(colecao,qnt,elem)
+            imprimeColecao(colecao, qtd)
+
+        if opc == 5:
+            elem = int(input("Digite um elemento: "))
+            qtd = removeTodasOcorrencia(colecao,qnt,elem)
+            imprimeColecao(colecao, qtd)
+
+        if opc == 6:
+            elem = int(input("Digite o elemento que deseja buscar: "))
+
+            buscaElemento(colecao,qtd,elem)
+            
+        if opc == 7:
+            elem = int(input("Digite um elemento: "))
+            valor = int(input("Digite um valor para comparação: "))
+            qnd = verificaIgual(colecao,qnt,elem)
+            imprimeColecao(colecao, qtd)
+
+    print("\n\nFim do programa.")
+
+main()
+    
